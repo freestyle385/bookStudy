@@ -43,13 +43,21 @@ public class DBConfig {
 		sqlSessionFactoryBean.setDataSource(dataSource);
 		// 마이바티스 매퍼 파일의 위치 설정
 		sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapper/**/sql-*.xml"));
-		
+		sqlSessionFactoryBean.setConfiguration(mybatisConfig());
 		return sqlSessionFactoryBean.getObject();
 	}
 	
 	@Bean
 	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
+	}
+	
+	@Bean
+	@ConfigurationProperties(prefix = "mybatis.configuration")
+	// application.properties의 설정 중 마이바티스 관련 설정을 가져옴
+	public org.apache.ibatis.session.Configuration mybatisConfig(){
+		return new org.apache.ibatis.session.Configuration();
+		// 가져온 마이바티스 설정을 자바 클래스로 만들어 반환
 	}
 
 }
