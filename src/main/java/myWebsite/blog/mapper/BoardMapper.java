@@ -13,4 +13,9 @@ public interface BoardMapper {
 
 	void insertBlog(BlogDto blogDto) throws Exception;
 	
+	void updateHitCnt(int blogId) throws Exception;
+
+	BlogDto getBlogDetail(int blogId) throws Exception;
+
+	
 }

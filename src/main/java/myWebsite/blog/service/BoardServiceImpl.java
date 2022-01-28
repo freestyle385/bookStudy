@@ -24,4 +24,11 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertBlog(blogDto);
 	}
 
+	@Override
+	public BlogDto getBlogDetail(int blogId) throws Exception {
+		boardMapper.updateHitCnt(blogId);
+		
+		return boardMapper.getBlogDetail(blogId);
+	}
+
 }

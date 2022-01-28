@@ -30,4 +30,20 @@
 			)
 		]]>
 	</insert>
+	
+	<update id="updateHitCnt" parameterType="int">
+		<![CDATA[
+			UPDATE blog
+			SET hit_cnt = hit_cnt + 1
+			WHERE blog_id = #{blogId}
+		]]>
+	</update>
+	
+	<select id="getBlogDetail" parameterType="int" resultType="myWebsite.blog.dto.BlogDto">
+		<![CDATA[
+			SELECT *
+			FROM blog
+			WHERE blog_id = #{blogId}
+		]]>
+	</select>
 </mapper>

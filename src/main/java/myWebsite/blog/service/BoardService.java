@@ -10,4 +10,6 @@ public interface BoardService {
 
 	void insertBlog(BlogDto blogDto) throws Exception;
 
+	BlogDto getBlogDetail(int blogId) throws Exception;
+
 }
