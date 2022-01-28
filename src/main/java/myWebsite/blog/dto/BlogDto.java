@@ -1,4 +1,4 @@
-package myWebsite.dto;
+package myWebsite.blog.dto;
 
 import java.time.LocalDateTime;
 
@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class BlogDto {
-	private int id;
+	private int blogId;
 	private String title;
 	private String body;
 	private String writerId;
