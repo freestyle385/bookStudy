@@ -12,5 +12,5 @@ public class BlogDto {
 	private String writerId;
 	private int hitCnt;
 	private LocalDateTime regDate;
-	private LocalDateTime updateDate;
+	private LocalDateTime updDate;
 }

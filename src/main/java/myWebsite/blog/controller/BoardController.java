@@ -26,4 +26,17 @@ public class BoardController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/board/showBlogWrite.do")
+	public String showBlogWrite() throws Exception{
+		
+		return "/board/blogWrite";
+	}
+	
+	@RequestMapping("/board/insertBlog.do")
+	public String insertBlog(BlogDto blogDto) throws Exception{
+		boardService.insertBlog(blogDto);
+		
+		return "redirect:/board/showBlogList.do";
+	}
 }

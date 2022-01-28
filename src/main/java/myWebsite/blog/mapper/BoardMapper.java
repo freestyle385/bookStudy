@@ -10,5 +10,7 @@ import myWebsite.blog.dto.BlogDto;
 public interface BoardMapper {
 	
 	List<BlogDto> getBlogList() throws Exception;
+
+	void insertBlog(BlogDto blogDto) throws Exception;
 	
 }

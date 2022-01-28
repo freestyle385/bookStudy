@@ -9,4 +9,25 @@
 			ORDER BY blog_id DESC
 		]]>
 	</select>
+	
+	<insert id="insertBlog" parameterType="myWebsite.blog.dto.BlogDto">
+		<![CDATA[
+			INSERT INTO blog
+			(
+			    title,
+			    `body`,
+			    writer_id,
+			    reg_date,
+			    upd_date
+			)
+			VALUES
+			(
+			    #{title},
+			    #{body},
+			    1,
+			    NOW(),
+			    NOW()
+			)
+		]]>
+	</insert>
 </mapper>

@@ -19,4 +19,9 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.getBlogList();
 	}
 
+	@Override
+	public void insertBlog(BlogDto blogDto) throws Exception {
+		boardMapper.insertBlog(blogDto);
+	}
+
 }

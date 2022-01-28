@@ -8,4 +8,6 @@ public interface BoardService {
 
 	List<BlogDto> getBlogList() throws Exception;
 
+	void insertBlog(BlogDto blogDto) throws Exception;
+
 }
