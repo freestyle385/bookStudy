@@ -11,12 +11,16 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @PropertySource("classpath:/application.properties")
+@EnableTransactionManagement
 public class DBConfig {
 
 	@Autowired
@@ -60,6 +64,11 @@ public class DBConfig {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
 	
+	@Bean
+	public PlatformTransactionManager transactionManager() throws Exception {
+		// 스프링에서 제공하는 트랜잭션매니저 생성
+		return new DataSourceTransactionManager(dataSource());
+	}
 	
 
 }

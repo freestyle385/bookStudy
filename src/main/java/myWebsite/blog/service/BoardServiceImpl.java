@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -13,6 +14,7 @@ import myWebsite.blog.mapper.BoardMapper;
 import myWebsite.common.FileUtils;
 
 @Service
+@Transactional
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
@@ -39,7 +41,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BlogDto getBlogDetail(int blogId) throws Exception {
 		boardMapper.updateHitCnt(blogId);
-		
+		int i = 10 / 0;
 		BlogDto blog = boardMapper.getBlogDetail(blogId);
 		List<BlogFileDto> fileList = boardMapper.getBlogFileList(blogId);
 		blog.setFileList(fileList);
