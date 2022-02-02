@@ -2,13 +2,15 @@ package myWebsite.blog.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import myWebsite.blog.dto.BlogDto;
 
 public interface BoardService {
 
 	List<BlogDto> getBlogList() throws Exception;
 
-	void insertBlog(BlogDto blog) throws Exception;
+	void insertBlog(BlogDto blog, MultipartHttpServletRequest multipartReq) throws Exception;
 
 	BlogDto getBlogDetail(int blogId) throws Exception;
 

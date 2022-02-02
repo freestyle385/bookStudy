@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import myWebsite.blog.dto.BlogDto;
@@ -34,8 +35,8 @@ public class BoardController {
 	}
 
 	@RequestMapping("/board/insertBlog.do")
-	public String insertBlog(BlogDto blog) throws Exception {
-		boardService.insertBlog(blog);
+	public String insertBlog(BlogDto blog, MultipartHttpServletRequest multipartReq) throws Exception {
+		boardService.insertBlog(blog, multipartReq);
 
 		return "redirect:/board/showBlogList.do";
 	}

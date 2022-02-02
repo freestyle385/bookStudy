@@ -10,7 +10,7 @@
 		]]>
 	</select>
 	
-	<insert id="insertBlog" parameterType="myWebsite.blog.dto.BlogDto">
+	<insert id="insertBlog" parameterType="myWebsite.blog.dto.BlogDto" useGeneratedKeys="true" keyProperty="blogId">
 		<![CDATA[
 			INSERT INTO blog
 			(
@@ -63,4 +63,31 @@
 			WHERE blog_id = #{blogId}
 		]]>
 	</delete>
+	
+	<insert id="insertBlogFileList" parameterType="myWebsite.blog.dto.BlogFileDto">
+		<![CDATA[
+			INSERT INTO blog_file
+			(
+				blog_id,
+				original_file_name,
+				stored_file_path,
+				file_size,
+				writer_id,
+				reg_date,
+				upd_date
+			)
+			VALUES
+		]]>
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.blogId},
+				#{item.originalFileName},
+				#{item.storedFilePath},
+				#{item.fileSize},
+				1,
+				NOW(),
+				NOW()
+			)
+		</foreach>
+	</insert>
 </mapper>

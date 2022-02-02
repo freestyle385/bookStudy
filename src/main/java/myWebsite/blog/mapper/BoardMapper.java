@@ -3,8 +3,10 @@ package myWebsite.blog.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import myWebsite.blog.dto.BlogDto;
+import myWebsite.blog.dto.BlogFileDto;
 
 @Mapper
 public interface BoardMapper {
@@ -20,5 +22,7 @@ public interface BoardMapper {
 	void updateBlog(BlogDto blog) throws Exception;
 
 	void deleteBlog(int blogId) throws Exception;
+
+	void insertBlogFileList(List<BlogFileDto> list) throws Exception;
 	
 }
