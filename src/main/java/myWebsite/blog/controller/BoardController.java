@@ -34,8 +34,8 @@ public class BoardController {
 	}
 
 	@RequestMapping("/board/insertBlog.do")
-	public String insertBlog(BlogDto blogDto) throws Exception {
-		boardService.insertBlog(blogDto);
+	public String insertBlog(BlogDto blog) throws Exception {
+		boardService.insertBlog(blog);
 
 		return "redirect:/board/showBlogList.do";
 	}
@@ -48,5 +48,29 @@ public class BoardController {
 		mv.addObject("blog", blog);
 
 		return mv;
+	}
+	
+	@RequestMapping("/board/showBlogUpdate.do")
+	public ModelAndView showBlogUpdate(int blogId) throws Exception {
+		ModelAndView mv = new ModelAndView("board/blogUpdate");
+
+		BlogDto blog = boardService.getBlogDetail(blogId);
+		mv.addObject("blog", blog);
+		
+		return mv;
+	}
+	
+	@RequestMapping("/board/updateBlog.do")
+	public String updateBlog(BlogDto blog) throws Exception {
+		boardService.updateBlog(blog);
+
+		return "redirect:/board/showBlogList.do";
+	}
+	
+	@RequestMapping("/board/deleteBlog.do")
+	public String deleteBlog(int blogId) throws Exception {
+		boardService.deleteBlog(blogId);
+
+		return "redirect:/board/showBlogList.do";
 	}
 }

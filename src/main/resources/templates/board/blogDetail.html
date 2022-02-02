@@ -62,8 +62,14 @@
 			
 			$("#delete").on("click", function(){
 				var frm = $("#frm")[0];
-				frm.action = "/board/deleteBlog.do";
-				frm.submit();
+				
+				if (confirm('게시물을 삭제하시겠습니까?') == false){
+					return;
+					
+				} else {
+					frm.action = "/board/deleteBlog.do";
+					frm.submit();
+				}
 			});
 			
 		});

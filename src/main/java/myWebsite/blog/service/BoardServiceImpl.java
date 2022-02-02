@@ -20,8 +20,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void insertBlog(BlogDto blogDto) throws Exception {
-		boardMapper.insertBlog(blogDto);
+	public void insertBlog(BlogDto blog) throws Exception {
+		boardMapper.insertBlog(blog);
 	}
 
 	@Override
@@ -29,6 +29,16 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.updateHitCnt(blogId);
 		
 		return boardMapper.getBlogDetail(blogId);
+	}
+
+	@Override
+	public void updateBlog(BlogDto blog) throws Exception {
+		boardMapper.updateBlog(blog);
+	}
+
+	@Override
+	public void deleteBlog(int blogId) throws Exception {
+		boardMapper.deleteBlog(blogId);
 	}
 
 }

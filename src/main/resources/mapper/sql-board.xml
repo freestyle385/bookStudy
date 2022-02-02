@@ -46,4 +46,21 @@
 			WHERE blog_id = #{blogId}
 		]]>
 	</select>
+	
+	<update id="updateBlog" parameterType="myWebsite.blog.dto.BlogDto">
+		<![CDATA[
+			UPDATE blog
+			SET title = #{title},
+				`body` = #{body},
+				upd_date = NOW()
+			WHERE blog_id = #{blogId}
+		]]>
+	</update>
+	
+	<delete id="deleteBlog" parameterType="int">
+		<![CDATA[
+			DELETE FROM blog
+			WHERE blog_id = #{blogId}
+		]]>
+	</delete>
 </mapper>

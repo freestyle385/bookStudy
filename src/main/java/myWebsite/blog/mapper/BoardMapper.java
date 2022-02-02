@@ -11,11 +11,14 @@ public interface BoardMapper {
 	
 	List<BlogDto> getBlogList() throws Exception;
 
-	void insertBlog(BlogDto blogDto) throws Exception;
+	void insertBlog(BlogDto blog) throws Exception;
 	
 	void updateHitCnt(int blogId) throws Exception;
 
 	BlogDto getBlogDetail(int blogId) throws Exception;
 
+	void updateBlog(BlogDto blog) throws Exception;
+
+	void deleteBlog(int blogId) throws Exception;
 	
 }
