@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import myWebsite.blog.dto.BlogDto;
+import myWebsite.blog.dto.BlogFileDto;
 
 public interface BoardService {
 
@@ -17,5 +18,7 @@ public interface BoardService {
 	void updateBlog(BlogDto blog) throws Exception;
 
 	void deleteBlog(int blogId) throws Exception;
+	
+	BlogFileDto getBlogFileInfo(int fileId, int blogId) throws Exception;
 
 }

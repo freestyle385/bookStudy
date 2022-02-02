@@ -39,8 +39,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BlogDto getBlogDetail(int blogId) throws Exception {
 		boardMapper.updateHitCnt(blogId);
-
-		return boardMapper.getBlogDetail(blogId);
+		
+		BlogDto blog = boardMapper.getBlogDetail(blogId);
+		List<BlogFileDto> fileList = boardMapper.getBlogFileList(blogId);
+		blog.setFileList(fileList);
+		
+		return blog;
 	}
 
 	@Override
@@ -51,6 +55,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void deleteBlog(int blogId) throws Exception {
 		boardMapper.deleteBlog(blogId);
+	}
+
+	@Override
+	public BlogFileDto getBlogFileInfo(int fileId, int blogId) throws Exception {
+		return boardMapper.getBlogFileInfo(fileId, blogId);
 	}
 
 }

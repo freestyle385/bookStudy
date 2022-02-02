@@ -42,6 +42,10 @@
 			<input type="hidden" id="blogId" name="blogId" th:value="${blog.blogId}">
 		</form>
 		
+		<div class="file_list">
+			<a th:each="list : ${blog.fileList}" th:href="@{/board/downloadBlogFile.do(fileId=${list.fileId}, blogId=${list.blogId})}" th:text="|${list.originalFileName} (${list.fileSize} kb)|"></a>
+		</div>
+		
 		<a href="/board/showBlogList.do" id="list" class="btn">목록으로</a>
 		<a href="#this" id="edit" class="btn">수정하기</a>
 		<a href="#this" id="delete" class="btn">삭제하기</a>

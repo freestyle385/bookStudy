@@ -90,4 +90,22 @@
 			)
 		</foreach>
 	</insert>
+	
+	<select id="getBlogFileList" resultType="myWebsite.blog.dto.BlogFileDto">
+		<![CDATA[
+			SELECT 
+					file_id, blog_id, original_file_name,
+					FORMAT(ROUND(file_size / 1024), 0) AS file_size
+			FROM blog_file
+			WHERE blog_id = #{blogId}
+		]]>
+	</select>
+	
+	<select id="getBlogFileInfo" parameterType="map" resultType="myWebsite.blog.dto.BlogFileDto">
+		<![CDATA[
+			SELECT original_file_name, stored_file_path, file_size
+			FROM blog_file
+			WHERE file_id = #{fileId} AND blog_id = #{blogId}
+		]]>
+	</select>
 </mapper>
