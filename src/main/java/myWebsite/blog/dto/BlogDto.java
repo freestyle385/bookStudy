@@ -1,6 +1,5 @@
 package myWebsite.blog.dto;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Data;
@@ -12,7 +11,7 @@ public class BlogDto {
 	private String body;
 	private String writerId;
 	private int hitCnt;
-	private LocalDateTime regDate;
-	private LocalDateTime updDate;
+	private String regDate;
+	private String updDate;
 	private List<BlogFileDto> fileList;
 }

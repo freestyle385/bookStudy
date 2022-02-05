@@ -10,8 +10,9 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,7 +25,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
-	@RequestMapping("/board/showBlogList.do")
+	@RequestMapping(value = "/posts", method = RequestMethod.GET)
 	public ModelAndView showBlogList() throws Exception {
 		// blogList.html를 불러올 주소 입력
 		ModelAndView mv = new ModelAndView("board/blogList");
@@ -35,22 +36,23 @@ public class BoardController {
 
 		return mv;
 	}
-
-	@RequestMapping("/board/showBlogWrite.do")
+	
+	@RequestMapping(value = "/posts/new-post", method = RequestMethod.GET)
 	public String showBlogWrite() throws Exception {
 
 		return "/board/blogWrite";
 	}
 
-	@RequestMapping("/board/insertBlog.do")
+	@RequestMapping(value = "/posts", method = RequestMethod.POST)
 	public String insertBlog(BlogDto blog, MultipartHttpServletRequest multipartReq) throws Exception {
+		// 파일 업로드를 위한 multipartReq
 		boardService.insertBlog(blog, multipartReq);
-
-		return "redirect:/board/showBlogList.do";
+		
+		return "redirect:/posts";
 	}
 
-	@RequestMapping("/board/showBlogDetail.do")
-	public ModelAndView showBlogDetail(int blogId) throws Exception {
+	@RequestMapping(value = "/posts/{blogId}", method = RequestMethod.GET)
+	public ModelAndView showBlogDetail(@PathVariable("blogId") int blogId) throws Exception {
 		ModelAndView mv = new ModelAndView("board/blogDetail");
 
 		BlogDto blog = boardService.getBlogDetail(blogId);
@@ -59,8 +61,8 @@ public class BoardController {
 		return mv;
 	}
 
-	@RequestMapping("/board/showBlogUpdate.do")
-	public ModelAndView showBlogUpdate(int blogId) throws Exception {
+	@RequestMapping(value = "/posts/{blogId}/edit", method = RequestMethod.GET)
+	public ModelAndView showBlogUpdate(@PathVariable("blogId") int blogId) throws Exception {
 		ModelAndView mv = new ModelAndView("board/blogUpdate");
 
 		BlogDto blog = boardService.getBlogDetail(blogId);
@@ -68,23 +70,23 @@ public class BoardController {
 
 		return mv;
 	}
-
-	@RequestMapping("/board/updateBlog.do")
+	
+	@RequestMapping(value = "/posts/{blogId}", method = RequestMethod.PUT)
 	public String updateBlog(BlogDto blog) throws Exception {
 		boardService.updateBlog(blog);
 
-		return "redirect:/board/showBlogList.do";
+		return "redirect:/posts";
 	}
 
-	@RequestMapping("/board/deleteBlog.do")
-	public String deleteBlog(int blogId) throws Exception {
+	@RequestMapping(value = "/posts/{blogId}", method = RequestMethod.DELETE)
+	public String deleteBlog(@PathVariable("blogId") int blogId) throws Exception {
 		boardService.deleteBlog(blogId);
 
-		return "redirect:/board/showBlogList.do";
+		return "redirect:/posts";
 	}
-
-	@RequestMapping("/board/downloadBlogFile.do")
-	public void downloadBlogFile(@RequestParam int fileId, @RequestParam int blogId, HttpServletResponse res)
+	
+	@RequestMapping(value = "/posts/{blogId}/file/{fileId}", method = RequestMethod.GET)
+	public void downloadBlogFile(@PathVariable("blogId") int blogId, @PathVariable("fileId") int fileId, HttpServletResponse res)
 			throws Exception {
 		BlogFileDto blogFile = boardService.getBlogFileInfo(fileId, blogId);
 
@@ -108,5 +110,4 @@ public class BoardController {
 			res.getOutputStream().close();
 		}
 	}
-
 }

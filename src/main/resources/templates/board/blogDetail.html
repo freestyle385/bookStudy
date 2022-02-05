@@ -39,43 +39,36 @@
 					</tr>
 				</tbody>
 			</table>
-			<input type="hidden" id="blogId" name="blogId" th:value="${blog.blogId}">
+			<input type="hidden" id="blogId" name="blogId" th:value="${blog.blogId}"/>
+			<input type="hidden" id="method" name="_method"/>
 		</form>
 		
 		<div class="file_list">
-			<a th:each="list : ${blog.fileList}" th:href="@{/board/downloadBlogFile.do(fileId=${list.fileId}, blogId=${list.blogId})}" th:text="|${list.originalFileName} (${list.fileSize} kb)|"></a>
+			<a th:each="list : ${blog.fileList}" th:href="@{'/posts/' + ${blog.blogId} + '/file/' + ${list.fileId}}" th:text="|${list.originalFileName} (${list.fileSize} kb)|"></a>
 		</div>
 		
-		<a href="/board/showBlogList.do" id="list" class="btn">목록으로</a>
-		<a href="#this" id="edit" class="btn">수정하기</a>
+		<a href="/posts" id="list" class="btn">목록으로</a>
+		<a th:href="@{'/posts/' + ${blog.blogId} + '/edit'}" id="edit" class="btn">수정하기</a>
 		<a href="#this" id="delete" class="btn">삭제하기</a>
 	</div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#list").on("click", function(){
-				location.href = "/board/showBlogList.do";
-			});
-			
-			$("#edit").on("click", function(){
-				var frm = $("#frm")[0];
-				frm.action = "/board/showBlogUpdate.do";
-				frm.submit();
-			});
+			var blogId = $("#blogId").val();
 			
 			$("#delete").on("click", function(){
-				var frm = $("#frm")[0];
 				
 				if (confirm('게시물을 삭제하시겠습니까?') == false){
 					return;
 					
 				} else {
-					frm.action = "/board/deleteBlog.do";
+					$("#method").val("delete");
+					var frm = $("#frm")[0];
+					frm.action = "/posts/"+blogId;
 					frm.submit();
 				}
 			});
-			
 		});
 	</script>
 </body>

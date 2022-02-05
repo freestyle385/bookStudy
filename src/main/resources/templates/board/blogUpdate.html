@@ -42,19 +42,21 @@
 				</tbody>
 			</table>
 			<input type="hidden" id="blogId" name="blogId" th:value="${blog.blogId}">
+			<input type="hidden" name="_method" value="PUT"/>
 		</form>
 		
-		<a href="/board/showBlogList.do" id="list" class="btn">목록으로</a>
+		<a href="/posts" id="list" class="btn">목록으로</a>
 		<a href="#this" id="edit" class="btn">저장</a>
 	</div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			var blogId = $("#blogId").val();
 			
 			$("#edit").on("click", function(){
 				var frm = $("#frm")[0];
-				frm.action = "updateBlog.do";
+				frm.action = "/posts/"+blogId;
 				frm.submit();
 			});
 			

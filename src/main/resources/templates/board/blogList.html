@@ -28,7 +28,7 @@
 	        	<!-- c:if문과 forEach문 -->
 	        	<tr th:if="${#lists.size(blogList)} > 0" th:each="blogList : ${blogList}">
 	        		<td th:text="${blogList.blogId}"></td>
-	        		<td class="title"><a href="/board/showBlogDetail.do?blogId=" th:attrappend="href=${blogList.blogId}" th:text="${blogList.title}"></a></td>
+	        		<td class="title"><a href="/posts/" th:attrappend="href=${blogList.blogId}" th:text="${blogList.title}"></a></td>
 	        		<td th:text="${blogList.writerId}"></td>
 	        		<td th:text="${blogList.hitCnt}"></td>
 	        	</tr>
@@ -38,7 +38,7 @@
 	        	</tr>
 	        </tbody>
 	    </table>
-	    <a href="/board/showBlogWrite.do" class="btn">글 쓰기</a>
+	    <a href="/posts/new-post" class="btn">글 쓰기</a>
     </div>
 </body>
 </html>
