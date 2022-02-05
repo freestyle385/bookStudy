@@ -1,4 +1,4 @@
-package myWebsite.blog.service;
+package bookStudy.blog.service;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import myWebsite.blog.dto.BlogDto;
-import myWebsite.blog.dto.BlogFileDto;
-import myWebsite.blog.mapper.BoardMapper;
-import myWebsite.common.FileUtils;
+import bookStudy.blog.dto.BlogDto;
+import bookStudy.blog.dto.BlogFileDto;
+import bookStudy.blog.mapper.BoardMapper;
+import bookStudy.common.FileUtils;
 
 @Service
 @Transactional

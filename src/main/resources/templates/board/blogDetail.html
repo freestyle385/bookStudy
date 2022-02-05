@@ -63,7 +63,7 @@
 					return;
 					
 				} else {
-					$("#method").val("delete");
+					$("#method").attr("value", "delete");
 					var frm = $("#frm")[0];
 					frm.action = "/posts/"+blogId;
 					frm.submit();

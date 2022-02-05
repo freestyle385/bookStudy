@@ -1,12 +1,12 @@
-package myWebsite.blog.mapper;
+package bookStudy.blog.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import myWebsite.blog.dto.BlogDto;
-import myWebsite.blog.dto.BlogFileDto;
+import bookStudy.blog.dto.BlogDto;
+import bookStudy.blog.dto.BlogFileDto;
 
 @Mapper
 public interface BoardMapper {

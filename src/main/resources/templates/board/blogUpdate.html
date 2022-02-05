@@ -8,7 +8,7 @@
 <body>
 	<div class="container">
 		<h2>게시글 수정 화면</h2>
-	    <form id="frm" method="post">
+	    <form id="frm" method="POST" th:action="@{'/posts/' + ${blog.blogId}}" enctype="multipart/form-data">
 	    	<table class="board_detail">
 				<colgroup>
 					<col width="15%"/>
@@ -41,9 +41,14 @@
 					</tr>
 				</tbody>
 			</table>
+			<input type="file" id="files" name="files" multiple="multiple">
 			<input type="hidden" id="blogId" name="blogId" th:value="${blog.blogId}">
 			<input type="hidden" name="_method" value="PUT"/>
 		</form>
+		
+		<div class="file_list">
+			<a th:each="list : ${blog.fileList}" th:href="@{'/posts/' + ${blog.blogId} + '/file/' + ${list.fileId}}" th:text="|${list.originalFileName} (${list.fileSize} kb)|"></a>
+		</div>
 		
 		<a href="/posts" id="list" class="btn">목록으로</a>
 		<a href="#this" id="edit" class="btn">저장</a>
@@ -56,7 +61,6 @@
 			
 			$("#edit").on("click", function(){
 				var frm = $("#frm")[0];
-				frm.action = "/posts/"+blogId;
 				frm.submit();
 			});
 			

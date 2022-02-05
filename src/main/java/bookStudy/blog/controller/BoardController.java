@@ -1,4 +1,4 @@
-package myWebsite.blog.controller;
+package bookStudy.blog.controller;
 
 import java.io.File;
 import java.net.URLEncoder;
@@ -11,14 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import myWebsite.blog.dto.BlogDto;
-import myWebsite.blog.dto.BlogFileDto;
-import myWebsite.blog.service.BoardService;
+import bookStudy.blog.dto.BlogDto;
+import bookStudy.blog.dto.BlogFileDto;
+import bookStudy.blog.service.BoardService;
 
 @Controller
 public class BoardController {
@@ -72,7 +73,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/posts/{blogId}", method = RequestMethod.PUT)
-	public String updateBlog(BlogDto blog) throws Exception {
+	public String updateBlog(@RequestBody BlogDto blog) throws Exception {
 		boardService.updateBlog(blog);
 
 		return "redirect:/posts";

@@ -1,4 +1,4 @@
-package myWebsite.blog.controller;
+package bookStudy.blog.controller;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import myWebsite.blog.dto.BlogDto;
-import myWebsite.blog.service.BoardService;
+import bookStudy.blog.dto.BlogDto;
+import bookStudy.blog.service.BoardService;
 
 @RestController
 public class RestApiBoardController {

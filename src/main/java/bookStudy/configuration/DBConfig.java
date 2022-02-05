@@ -1,4 +1,4 @@
-package myWebsite.configuration;
+package bookStudy.configuration;
 
 import javax.sql.DataSource;
 

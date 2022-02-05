@@ -1,4 +1,4 @@
-package myWebsite.blog.dto;
+package bookStudy.blog.dto;
 
 import lombok.Data;
 

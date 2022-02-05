@@ -1,11 +1,11 @@
-package myWebsite.blog.service;
+package bookStudy.blog.service;
 
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import myWebsite.blog.dto.BlogDto;
-import myWebsite.blog.dto.BlogFileDto;
+import bookStudy.blog.dto.BlogDto;
+import bookStudy.blog.dto.BlogFileDto;
 
 public interface BoardService {
 

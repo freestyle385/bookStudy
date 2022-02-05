@@ -1,4 +1,4 @@
-package myWebsite.common;
+package bookStudy.common;
 
 import java.io.File;
 import java.time.ZonedDateTime;
@@ -12,7 +12,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import myWebsite.blog.dto.BlogFileDto;
+import bookStudy.blog.dto.BlogFileDto;
 
 @Component
 public class FileUtils {
